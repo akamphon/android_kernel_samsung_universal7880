@@ -76,6 +76,24 @@
 		mfc0 = &mfc_0;
 	};
 
+    firmware: firmware {
+		android {
+			compatible = "android,firmware";
+			fstab {
+				compatible = "android,fstab";
+				system {
+					compatible = "android,system";
+					dev = "/dev/block/platform/13540000.dwmmc0/by-name/SYSTEM";
+					type = "ext4";
+					mnt_flags = "ro,noatime,errors=panic,noload,block_validity";
+					fsmgr_flags = "wait";
+					status = "ok";
+				};
+
+			};
+		};
+	};
+
 	chipid@10100000 {
 		compatible = "samsung,exynos4210-chipid";
 		reg = <0x0 0x10100000 0x100>;
