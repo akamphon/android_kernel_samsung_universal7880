@@ -33,7 +33,7 @@
 
 #include "gadget_chips.h"
 
-//#include "../function/f_fs.c"
+#include "../function/f_fs.c"
 #include "../function/f_audio_source.c"
 #include "../function/f_midi.c"
 #include "../function/f_mass_storage.c"
@@ -264,7 +264,7 @@ static void android_disable(struct android_dev *dev)
 		usb_remove_config(cdev, &android_config_driver);
 	}
 }
-#if 0
+
 /*-------------------------------------------------------------------------*/
 /* Supported functions initialization */
 struct functionfs_config {
@@ -421,7 +421,6 @@ static void *functionfs_acquire_dev_callback(const char *dev_name)
 static void functionfs_release_dev_callback(struct ffs_data *ffs_data)
 {
 }
-#endif
 
 struct adb_data {
 	bool opened;
@@ -1425,7 +1424,7 @@ static struct android_usb_function midi_function = {
 
 
 static struct android_usb_function *supported_functions[] = {
-//	&ffs_function,
+	&ffs_function,
 	&adb_function,
 	&acm_function,
 	&mtp_function,
