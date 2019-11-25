@@ -1796,13 +1796,11 @@ void xhci_mem_cleanup(struct xhci_hcd *xhci)
 	int size;
 	int i, j, num_ports;
 
-	if (timer_pending(&xhci->cmd_timer)) {
 #if defined(CONFIG_USB_HOST_SAMSUNG_FEATURE)
 	    cancel_delayed_work_sync(&xhci->cmd_timer);
 #else
 	    del_timer_sync(&xhci->cmd_timer);
 #endif
-    }
 
 	/* Free the Event Ring Segment Table and the actual Event Ring */
 	size = sizeof(struct xhci_erst_entry)*(xhci->erst.num_entries);
